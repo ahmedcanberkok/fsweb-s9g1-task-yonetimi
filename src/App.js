@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "./app.css";
 import Task from "./Task";
-import TaskForm from "./TaskForm";
 import TaskHookForm from "./TaskHookForm";
 import PeopleForm from "./PeopleForm";
 import { initialTasks, initialTeam } from "./data";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -21,6 +22,13 @@ function App() {
 
   function handleComplete(id) {
     console.log("tamamlama fonksiyonunu buraya yazın")
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, status: "yapıldı" };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
   }
 
   return (
@@ -59,7 +67,11 @@ function App() {
           </div>
         </div>
       </div>
-
+<ToastContainer
+autoClose={4000}
+newestOnTop
+theme="colored"
+/>
     </div>
   );
 }
