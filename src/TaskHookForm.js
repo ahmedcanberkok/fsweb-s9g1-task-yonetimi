@@ -29,6 +29,7 @@ const TaskHookForm = ({ kisiler, submitFn }) => {
   function formSubmit(formData) {
     console.log("formSubmit > formData : ",formData);
     toast.success("Task oluşturuldu.");
+    toast.info("Task oluşturuldu.");
 
 
     submitFn({
